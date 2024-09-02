@@ -1,97 +1,49 @@
-const Course = require('../models/courseModel');
+require('dotenv').config();
+
+const express = require('express');
+
+const annroutes = require('./routes/anns');
+const courseroutes = require('./routes/courses');
+const studentsRoutes = require('./routes/studentRouters');
+const teachersRoutes = require('./routes/teacherRouters')
+const instructorsRoutes = require('./routes/InstructorRouters')
+
 const mongoose = require('mongoose');
+const morgan = require('morgan')
 
-//get all courses
-const getCourses = async (req, res) => {
-    const courses = await Course.find({}).sort({course_id: 1});
+const userRoutes = require('./routes/user')
 
-    res.status(200).json(courses);
-}
+//The express app...
+const app = express();
 
-//get a single course
-const getCourse = async (req, res) => {
-    const {id} = req.params;
+//middlewear...
+app.use(morgan('dev'));
+app.use(express.json());
+app.use((req, res, next) => {
+    console.log(req.path, req.method);
+    next();
+});
 
-    if(!mongoose.Types.ObjectId.isValid(id)){
-        return res.status(404).json({error: 'No such course.'})
-    }
-
-    const course = await Course.findById(id);
-
-    if(!course){
-        return res.status(404).json({error: 'No such course.'});
-    }
-
-    res.status(200).json(course);
-}
+app.use('/api/Anns', annroutes);
+app.use('/api/students', studentsRoutes);
+app.use('/api/courses', courseroutes);
+app.use('/api/user',userRoutes);
+app.use('/api/teachers',teachersRoutes);
+app.use('/api/instructors',instructorsRoutes);
 
 
-//create new course
-const createCourse = async (req, res) => {
-    const {course_name, course_id} = req.body;
 
-    let emptyFields = []
-
-  if (!course_name) {
-    emptyFields.push('course_name')
-  }
-  if (!course_id) {
-    emptyFields.push('course_id')
-  }
-  if (emptyFields.length > 0) {
-    return res.status(400).json({ error: 'Please fill in all fields', emptyFields })
-  }
-
-    //add to database
-    try{
-        const course = await Course.create({course_name, course_id});
-        res.status(200).json(course);
-    } catch (error) {
-        res.status(400).json({error: error.message});
-    }
-}
-
-//delete a course
-const deleteCourse = async (req, res) => {
-    const {id} = req.params;
-
-    if(!mongoose.Types.ObjectId.isValid(id)){
-        return res.status(404).json({error: 'No such course.'});
-    }
-
-    const course = await Course.findOneAndDelete({_id: id});
-
-    if(!course){
-        return res.status(404).json({error: 'No such course.'});
-    }
-
-    res.status(200).json(course);
-}
-
-//update a course
-const updateCourse = async (req, res) =>{
-    const {id} = req.params;
-
-    if(!mongoose.Types.ObjectId.isValid(id)){
-        return res.status(404).json({error: 'No such course.'});
-    }
-
-    const course = await Course.findOneAndUpdate({_id: id}, {
-        ...req.body
-    });
-
-    if(!course){
-        return res.status(404).json({error: 'No such course.'});
-    }
-
-    res.status(200).json(course);
-}
+//Connet to db
+mongoose.connect(process.env.MONG_URI)
+    .then(() => {
+        //lisitn for requests...
+        app.listen(process.env.PORT, () => {
+            console.log('Connected to Database & Listeneing on port :', process.env.PORT);
+        });
+    })
+    .catch((error) => {
+        console.log(error);
+    })
 
 
-module.exports = {
-    createCourse,
-    getCourses,
-    getCourse,
-    deleteCourse,
-    updateCourse
-}
+
