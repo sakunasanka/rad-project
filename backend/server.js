@@ -2,8 +2,8 @@ require('dotenv').config();
 
 const express = require('express');
 
-const annroutes = require('./routes/anns');
 
+const instructorsRoutes = require('./routes/InstructorRouters')
 
 const mongoose = require('mongoose');
 const morgan = require('morgan')
@@ -21,8 +21,8 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use('/api/Anns', annroutes);
 
+app.use('/api/instructors',instructorsRoutes);
 
 
 
