@@ -2,7 +2,10 @@ require('dotenv').config();
 
 const express = require('express');
 
-
+const annroutes = require('./routes/anns');
+const courseroutes = require('./routes/courses');
+const studentsRoutes = require('./routes/studentRouters');
+const teachersRoutes = require('./routes/teacherRouters')
 const instructorsRoutes = require('./routes/InstructorRouters')
 
 const mongoose = require('mongoose');
@@ -21,7 +24,11 @@ app.use((req, res, next) => {
     next();
 });
 
-
+app.use('/api/Anns', annroutes);
+app.use('/api/students', studentsRoutes);
+app.use('/api/courses', courseroutes);
+app.use('/api/user',userRoutes);
+app.use('/api/teachers',teachersRoutes);
 app.use('/api/instructors',instructorsRoutes);
 
 
