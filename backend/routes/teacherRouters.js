@@ -1,20 +1,20 @@
-const express = require('express');
-const router = express.Router();
-const teacherController = require('../controllers/teacherControllers');
+const express = require('express')
+const router = express.Router()
+const teacherController = require ('../controllers/teacherControllers')
 
 //get all teacher details
-router.get('/', teacherController.getAllteacherDetails);
+router.get('/',teacherController.getAllteacherDetails)
 
 //get single teacher details
-router.get('/:id', teacherController.getSingleTeacherDetails);
+router.get('/:id',teacherController.getSingleTeacherDetails)
 
 //create teacher
-router.post('/', teacherController.createTeacher);
+router.post('/',teacherController.createTeacher)
 
 //delete teacher
-router.delete('/:id', teacherController.deleteTeacher);
+router.delete('/:id',teacherController.deleteTeacher)
 
 //update teacher
-router.patch('/:id', teacherController.updateTeacher);
+router.patch('/:id',teacherController.updateTeacher)
 
-module.exports = router;
+module.exports = router
