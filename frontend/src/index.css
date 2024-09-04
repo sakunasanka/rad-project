@@ -6,16 +6,20 @@
   --primary: #2187e0;
   --error: #e7195a;
 }
+
 body {
   background: #7780a7;
   /* background-image: url(Images/background1.jpg); */
   margin: 0;
   font-family: "Poppins";
 }
+
+/*header*/
 header {
-  background: 
-  #ffffff;
+  background:
+    #ffffff;
 }
+
 header .container {
   max-width: 1400px;
   margin: 0 auto;
@@ -25,95 +29,18 @@ header .container {
   align-items: center;
   justify-content: space-between;
 }
+
 header a {
   color: #333;
   text-decoration: none;
-}
-.pages{
-  max-width: 1400px;
-  padding: 20px;
-  margin: 0 auto;
+  margin-left: 10px;
 }
 
-/* homepage */
-.home {
-  display: grid;
-  grid-template-columns: 3fr 1fr;
-  gap: 100px;
-}
-.course-details {
-  background: #fff;
-  border-radius: 4px;
-  margin: 20px auto;
-  padding: 20px;
-  position: relative;
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
-}
-.course-details h4 {
-  margin: 0 0 10px 0;
-  font-size: 1.2em;
-  color: var(--primary);
-}
-.course-details p {
-  margin: 0;
-  font-size: 0.9em;
-  color: #555;
-}
-.course-details span {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  cursor: pointer;
-  background: #f1f1f1;
-  padding: 6px;
-  border-radius: 50%;
-  color: #333;
+nav {
+  display: flex;
+  align-items: center;
 }
 
-/* new workout form */
-label, input {
-  display: block;
-}
-
-input {
-  padding: 10px;
-  margin-top: 10px;
-  margin-bottom: 20px;
-  width: 80%;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-form button {
-  background: var(--primary);
-  border: 0;
-  color: #fff;
-  padding: 10px;
-  font-family: "Poppins";
-  border-radius: 4px;
-  cursor: pointer;
-  margin-right: 10px;
-  transition: background-color 0.3s ease-in-out;
-}
-
-button:hover {
-  background: #163f81; 
-}
-
-div.error {
-  padding: 10px;
-  background: #ffefef;
-  border: 1px solid var(--error);
-  color: var(--error);
-  border-radius: 4px;
-  margin: 20px 0;
-}
-
-input.error {
-  border: 1px solid var(--error);
-}
-
-/* Add these styles to customize the navigation buttons */
 .nav-buttons {
   display: flex;
   gap: 20px;
@@ -136,22 +63,111 @@ input.error {
   color: #fff;
 }
 
-nav-button:hover {
-  background-color: #000;
-  color: #fff;
+/* homepage */
+.home {
+  display: grid;
+  grid-template-columns: 2fr 2fr;
+  gap: 100px;
 }
 
-/* navbar */
-nav {
-  display: flex;
-  align-items: center;
+/*Courses*/
+.course-details {
+  background: #fff;
+  border-radius: 4px;
+  margin: 20px auto;
+  padding: 20px;
+  position: relative;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
 }
-nav a {
-  margin-left: 10px;
+
+.course-details h4 {
+  margin: 0 0 10px 0;
+  font-size: 1.2em;
+  color: var(--primary);
 }
+
+.course-details p {
+  margin: 0;
+  font-size: 0.9em;
+  color: #555;
+}
+
+.course-details span {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  background: #f1f1f1;
+  padding: 6px;
+  border-radius: 50%;
+  color: #333;
+}
+
+.pages {
+  max-width: 1400px;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+.card {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* new workout form */
+label,
+input {
+  display: block;
+}
+
+input {
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  width: 80%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+form button {
+  background: var(--primary);
+  border: 0;
+  color: #fff;
+  padding: 10px;
+  font-family: "Poppins";
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+  background: #163f81;
+}
+
+
+
+div.error {
+  padding: 10px;
+  background: #ffefef;
+  border: 1px solid var(--error);
+  color: var(--error);
+  border-radius: 4px;
+  margin: 20px 0;
+}
+
+input.error {
+  border: 1px solid var(--error);
+}
+
+
 
 /* auth forms */
-form.signup, form.login {
+form.signup,
+form.login {
   max-width: 300px;
   margin: 40px auto;
   padding: 20px;
@@ -159,7 +175,7 @@ form.signup, form.login {
   border-radius: 4px;
 }
 
-.logout{
+.logout {
   background: var(--primary);
   border: 0;
   color: #fff;
@@ -187,11 +203,14 @@ form.signup, form.login {
   color: #fff;
 }
 
+
+
 #paswword {
   font-size: 10px;
 }
 
-form.signup input, form.login input{
+form.signup input,
+form.login input {
   padding: 10px;
   margin-top: 10px;
   margin-bottom: 20px;
