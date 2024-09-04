@@ -29,14 +29,17 @@ const Home = () => {
 
   return (
     <div className="home">
-      <div className="courses">
+      <div>
         <h1>Courses</h1>
+        <CourseForm />
+      </div>
+      <div className="courses">
+        <h2>Course List</h2>
         {courses &&
           courses.map((course) => (
             <CourseDetails course={course} key={course._id} />
           ))}
       </div>
-      <CourseForm />
     </div>
   );
 };
