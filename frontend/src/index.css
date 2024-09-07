@@ -1,3 +1,11 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+
+}
+
 /* Sidebar Styling */
 .sidebar {
   position: fixed;
@@ -10,7 +18,8 @@
   transform: translateX(-100%);
   transition: transform 0.3s ease;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-  font-family: 'Poppins', sans-serif; /* Match font family */
+
+
 }
 
 .sidebar.open {
@@ -23,7 +32,8 @@
   padding: 15px 20px;
   text-decoration: none;
   font-size: 18px;
-  font-family: 'Poppins', sans-serif; /* Match font family */
+
+
   transition: background-color 0.3s ease;
 }
 
@@ -45,7 +55,8 @@
   left: 15px;
   z-index: 1000;
   transition: background-color 0.3s ease;
-  font-family: 'Poppins', sans-serif; /* Match font family */
+
+
 }
 
 .toggle-button:hover {
@@ -56,9 +67,10 @@
 .container {
   margin-left: 270px;
   transition: margin-left 0.3s ease;
+  /* position: fixed; */
 }
 
-.sidebar.open ~ .container {
+.sidebar.open~.container {
   margin-left: 270px;
 }
 
@@ -67,7 +79,8 @@ header {
   padding: 20px;
   color: white;
   position: relative;
-  font-family: 'Poppins', sans-serif; /* Match font family */
+
+
 }
 
 header .container {
@@ -84,24 +97,50 @@ header .container {
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  font-family: 'Poppins', sans-serif; /* Match font family */
+
 }
 
 .logout-button:hover {
   background-color: #c0392b;
 }
 
+/*page Styling*/
+
+.title,
+.sub-title {
+  text-align: center;
+  margin: 36px;
+
+}
+
+.page-container {
+  display: grid;
+  grid-template-rows: auto auto;
+  margin: 0 auto;
+
+
+  width: 80vw;
+  max-width: 600px;
+}
+
+
 /* Form Styling */
 form {
-  width: 80%;
-  max-width: 600px; /* Adjust based on your preference */
+  width: 100%;
+  /* max-width: 600px; */
+  /* Adjust based on your preference */
   margin: 0 auto;
   padding: 20px;
-  border: 1px solid #ddd; /* Light grey border */
-  border-radius: 8px; /* Rounded corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-  background-color: #fff; /* White background */
-  font-family: 'Poppins', sans-serif; /* Match font family */
+  border: 1px solid #ddd;
+  /* Light grey border */
+  border-radius: 8px;
+  /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* Subtle shadow for depth */
+  background-color: #fff;
+  /* White background */
+
+
 }
 
 /* Styling form elements */
@@ -115,54 +154,104 @@ form input {
   width: 100%;
   padding: 10px;
   margin-bottom: 12px;
-  border: 1px solid #ccc; /* Light grey border for inputs */
-  border-radius: 4px; /* Slightly rounded corners */
-  font-family: 'Poppins', sans-serif; /* Match font family */
+  border: 1px solid #ccc;
+  /* Light grey border for inputs */
+  border-radius: 4px;
+  /* Slightly rounded corners */
+
+
 }
 
-form button {
-  padding: 10px 20px;
+.btn {
   border: none;
   border-radius: 4px;
-  color: #fff;
-  background-color: #007bff; /* Primary blue color */
   cursor: pointer;
-  font-size: 16px;
+  outline: none;
+  background: none;
   transition: background-color 0.3s ease;
-  font-family: 'Poppins', sans-serif; /* Match font family */
+
 }
 
-form button:hover {
-  background-color: #0056b3; /* Darker blue on hover */
+.form-btn {
+  padding: 10px 20px;
+  color: #fff;
+  background-color: #007bff;
+  /* Primary blue color */
+  font-size: 16px;
+
 }
 
-form .cancel-button {
-  background-color: #6c757d; /* Secondary grey color */
+.form-btn:hover {
+  background-color: #0056b3;
+  /* Darker blue on hover */
 }
 
-form .cancel-button:hover {
-  background-color: #5a6268; /* Darker grey on hover */
+.cancel-btn {
+  padding: 10px 20px;
+  color: #fff;
+  background-color: #df9b35;
+  /* Primary blue color */
+  font-size: 16px;
+  margin-left: 10px;
 }
+
+.cancel-btn:hover {
+  background-color: hsl(36, 73%, 34%);
+  /* Darker grey on hover */
+}
+
+
 
 /* Styling the list of items */
 ul {
   list-style-type: none;
-  padding: 0;
+  
 }
 
-ul li {
-  border-bottom: 1px solid #eee; /* Light grey border between items */
-  padding: 10px 0;
+.list {
+  
+  padding: 20px;
+  border: 1px solid #ddd;
+  
+  border-radius: 8px;
+  /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* Subtle shadow for depth */
+  background-color: #fff;
+  /* White background */
+  margin-bottom: 10px;
+  /* Light grey border between items */
+  padding: 10px 50px;
 }
 
-ul li p {
-  margin: 0;
+.list p {
+
   padding: 5px 0;
 }
 
-ul li button {
-  margin-right: 10px;
-  font-family: 'Poppins', sans-serif; /* Match font family */
+
+.edit-btn {
+
+  background-color: #3498db;
+  padding: 4px 8px;
+  margin-right: 5px;
+  color: white;
+
 }
 
+.edit-btn:hover {
+  background-color: hsl(204, 70%, 33%);
+}
 
+.delete-btn {
+
+  background-color: #e74c3c;
+  padding: 4px 8px;
+  margin-right: 5px;
+  color: white;
+
+}
+
+.delete-btn:hover {
+  background-color: hsl(6, 78%, 37%);
+}

@@ -96,113 +96,118 @@ function Instructors() {
 
   return (
     <div>
-      <h1>Instructors</h1>
-
-      {/* Form for creating or updating an instructor */}
-      <form onSubmit={handleCreateOrUpdateInstructor}>
-        <div>
-          <label htmlFor="name">Name:</label>
-          <input
-            type="text"
-            id="name"
-            value={newInstructor.name}
-            onChange={(e) =>
-              setNewInstructor({ ...newInstructor, name: e.target.value })
-            }
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="country">Country:</label>
-          <input
-            type="text"
-            id="country"
-            value={newInstructor.country}
-            onChange={(e) =>
-              setNewInstructor({ ...newInstructor, country: e.target.value })
-            }
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="birth_Date">Birth Date:</label>
-          <input
-            type="date"
-            id="birth_Date"
-            value={newInstructor.birth_Date}
-            onChange={(e) =>
-              setNewInstructor({ ...newInstructor, birth_Date: e.target.value })
-            }
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            value={newInstructor.email}
-            onChange={(e) =>
-              setNewInstructor({ ...newInstructor, email: e.target.value })
-            }
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="Subjects">Subjects:</label>
-          <input
-            type="text"
-            id="Subjects"
-            value={newInstructor.Subjects}
-            onChange={(e) =>
-              setNewInstructor({ ...newInstructor, Subjects: e.target.value })
-            }
-            required
-          />
-        </div>
-        <div>
-          <button type="submit">
-            {editingInstructor ? 'Update Instructor' : 'Add Instructor'}
-          </button>
-          {editingInstructor && (
-            <button
-              type="button"
-              onClick={() => {
-                setEditingInstructor(null);
+      <h1 className='title'>Instructors</h1>
+      <div className="page-container">
+        {/* Form for creating or updating an instructor */}
+        <form onSubmit={handleCreateOrUpdateInstructor}>
+          <div>
+            <label htmlFor="name">Name:</label>
+            <input
+              type="text"
+              id="name"
+              value={newInstructor.name}
+              onChange={(e) =>
+                setNewInstructor({ ...newInstructor, name: e.target.value })
+              }
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="country">Country:</label>
+            <input
+              type="text"
+              id="country"
+              value={newInstructor.country}
+              onChange={(e) =>
+                setNewInstructor({ ...newInstructor, country: e.target.value })
+              }
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="birth_Date">Birth Date:</label>
+            <input
+              type="date"
+              id="birth_Date"
+              value={newInstructor.birth_Date}
+              onChange={(e) =>
                 setNewInstructor({
-                  name: '',
-                  country: '',
-                  birth_Date: '',
-                  email: '',
-                  Subjects: '',
-                });
-              }}
-            >
-              Cancel
+                  ...newInstructor,
+                  birth_Date: e.target.value,
+                })
+              }
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="email">Email:</label>
+            <input
+              type="email"
+              id="email"
+              value={newInstructor.email}
+              onChange={(e) =>
+                setNewInstructor({ ...newInstructor, email: e.target.value })
+              }
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="Subjects">Subjects:</label>
+            <input
+              type="text"
+              id="Subjects"
+              value={newInstructor.Subjects}
+              onChange={(e) =>
+                setNewInstructor({ ...newInstructor, Subjects: e.target.value })
+              }
+              required
+            />
+          </div>
+          <div>
+            <button type="submit" className='btn form-btn'>
+              {editingInstructor ? 'Update Instructor' : 'Add Instructor'}
             </button>
-          )}
-        </div>
-      </form>
+            {editingInstructor && (
+              <button
+                type="button"
+                onClick={() => {
+                  setEditingInstructor(null);
+                  setNewInstructor({
+                    name: '',
+                    country: '',
+                    birth_Date: '',
+                    email: '',
+                    Subjects: '',
+                  });
+                }}
+                className='btn cancel-btn'
+              >
+                Cancel
+              </button>
+            )}
+          </div>
+        </form>
 
-      <div>
-        <h2>Instructor List</h2>
-        <ul>
-          {instructors.map((instructor) => (
-            <li key={instructor._id}>
-              <p>Name: {instructor.name}</p>
-              <p>Country: {instructor.country}</p>
-              <p>Birth Date: {instructor.birth_Date.split('T')[0]}</p>
-              <p>Email: {instructor.email}</p>
-              <p>Subjects: {instructor.Subjects}</p>
-              <button onClick={() => handleEditInstructor(instructor)}>
-                Edit
-              </button>
-              <button onClick={() => handleDeleteInstructor(instructor._id)}>
-                Delete
-              </button>
-            </li>
-          ))}
-        </ul>
+        <div>
+          <h2 className='sub-title'>Instructor List</h2>
+          <ul>
+            {instructors.map((instructor) => (
+              <li key={instructor._id} className='list'>
+                <p>Name: {instructor.name}</p>
+                <p>Country: {instructor.country}</p>
+                <p>Birth Date: {instructor.birth_Date.split('T')[0]}</p>
+                <p>Email: {instructor.email}</p>
+                <p>Subjects: {instructor.Subjects}</p>
+                <button onClick={() => handleEditInstructor(instructor)} className='btn edit-btn'>
+                  Edit
+                </button>
+                <button onClick={() => handleDeleteInstructor(instructor._id)} className='btn delete-btn'>
+                  Delete
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );
