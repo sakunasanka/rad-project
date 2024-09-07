@@ -9,7 +9,7 @@ const Footer = () => {
           <a href="/privacy">Privacy Policy</a>
         </div>
         <div className="footer-info">
-          <p>&copy; {new Date().getFullYear()} School Admin System. All Rights Reserved.</p>
+          <p>&copy; {new Date().getFullYear()} School Admin Management System. All Rights Reserved.</p>
         </div>
       </div>
     </footer>
