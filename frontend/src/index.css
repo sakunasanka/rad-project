@@ -19,8 +19,6 @@
   transition: transform 0.3s ease;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 
-
-  font-family: 'Poppins', sans-serif; /* Match font family */
   z-index: 1;
 }
 
@@ -257,10 +255,7 @@ ul {
 .delete-btn:hover {
   background-color: hsl(6, 78%, 37%);
 }
-ul li button {
-  margin-right: 10px;
-  font-family: 'Poppins', sans-serif; /* Match font family */
-}
+
 
 .pages{
   min-height: 70vh;
