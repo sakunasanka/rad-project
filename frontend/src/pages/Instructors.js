@@ -95,8 +95,8 @@ function Instructors() {
   }, []);
 
   return (
-    <div>
-      <h1 className='title'>Instructors</h1>
+    <div class="page-background">
+      <h1 className="title">Instructors</h1>
       <div className="page-container">
         {/* Form for creating or updating an instructor */}
         <form onSubmit={handleCreateOrUpdateInstructor}>
@@ -164,7 +164,7 @@ function Instructors() {
             />
           </div>
           <div>
-            <button type="submit" className='btn form-btn'>
+            <button type="submit" className="btn form-btn">
               {editingInstructor ? 'Update Instructor' : 'Add Instructor'}
             </button>
             {editingInstructor && (
@@ -180,7 +180,7 @@ function Instructors() {
                     Subjects: '',
                   });
                 }}
-                className='btn cancel-btn'
+                className="btn cancel-btn"
               >
                 Cancel
               </button>
@@ -189,19 +189,25 @@ function Instructors() {
         </form>
 
         <div>
-          <h2 className='sub-title'>Instructor List</h2>
+          <h2 className="sub-title">Instructor List</h2>
           <ul>
             {instructors.map((instructor) => (
-              <li key={instructor._id} className='list'>
+              <li key={instructor._id} className="list">
                 <p>Name: {instructor.name}</p>
                 <p>Country: {instructor.country}</p>
                 <p>Birth Date: {instructor.birth_Date.split('T')[0]}</p>
                 <p>Email: {instructor.email}</p>
                 <p>Subjects: {instructor.Subjects}</p>
-                <button onClick={() => handleEditInstructor(instructor)} className='btn edit-btn'>
+                <button
+                  onClick={() => handleEditInstructor(instructor)}
+                  className="btn edit-btn"
+                >
                   Edit
                 </button>
-                <button onClick={() => handleDeleteInstructor(instructor._id)} className='btn delete-btn'>
+                <button
+                  onClick={() => handleDeleteInstructor(instructor._id)}
+                  className="btn delete-btn"
+                >
                   Delete
                 </button>
               </li>
