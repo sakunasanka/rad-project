@@ -44,7 +44,7 @@ body {
 
 /* Toggle Button */
 .toggle-button {
-  background-color: #08ad5b;
+  background-color: #268322;
   color: white;
   padding: 10px 20px;
   border: none;
@@ -59,7 +59,7 @@ body {
 }
 
 .toggle-button:hover {
-  background-color: #14242e;
+  background-color: hsl(118, 59%, 22%);
 }
 
 .container {
@@ -358,48 +358,4 @@ ul {
   margin-top: 15px;
   color: #666;
   font-size: 14px;
-}
-
-
-/*--------------------------------------------------------------*/
-/* Auth Links Styling */
-.auth-links {
-  display: flex;
-  gap: 15px;
-}
-
-.auth-links .nav-link {
-  display: inline-block;
-  padding: 10px 20px;
-  color: #fff;
-  background-color: #3498db;
-  text-decoration: none;
-  border-radius: 5px;
-  font-family: 'Poppins', sans-serif;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  font-size: 16px;
-}
-
-.auth-links .nav-link:hover {
-  background-color: #2980b9;
-  transform: translateY(-3px);
-}
-
-.auth-links .nav-link:active {
-  background-color: #1f6391;
-  transform: translateY(0);
-}
-
-
-
-
-.B {
-  font-size: 30px;
-  font-weight: bolder;
-  color: #191925;
-  /* Soft grey for description */
-  font-family: 'Poppins', sans-serif;
-  /* Consistent font */
-  margin-bottom: 20px;
-  text-align: center;
 }
