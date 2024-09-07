@@ -28,7 +28,7 @@ const Home = () => {
   }, [dispatch, user]);
 
   return (
-    <div className="home">
+    <div class="page-background">
       <div className="courses">
         <h1>Courses</h1>
         {courses &&
