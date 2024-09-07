@@ -189,7 +189,7 @@ function Instructors() {
       </form>
 
       <div>
-        <h2>Instructor List</h2>
+        <h2 className='sub-title'>Instructor List</h2>
         <ul>
           {instructors.map((instructor) => (
             <li key={instructor._id} className="list">
