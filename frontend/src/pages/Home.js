@@ -29,14 +29,19 @@ const Home = () => {
 
   return (
     <div class="page-background">
-      <div className="courses">
-        <h1>Courses</h1>
-        {courses &&
-          courses.map((course) => (
-            <CourseDetails course={course} key={course._id} />
-          ))}
-      </div>
+      <h1 className="title">Courses</h1>
       <CourseForm />
+      <div >
+        <h2 className="sub-title">Course List</h2>
+        <ul>
+          {courses &&
+            courses.map((course) => (
+              <li className='list'>
+                <CourseDetails course={course} key={course._id} />
+                </li>
+            ))}
+        </ul>
+      </div>
     </div>
   );
 };

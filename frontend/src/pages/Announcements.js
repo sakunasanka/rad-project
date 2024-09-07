@@ -82,7 +82,7 @@ function Announcements() {
 
   return (
     <div class="page-background">
-      <h1>Announcements</h1>
+      <h1 className="title">Announcements</h1>
 
       {/* Form for creating or updating an announcement */}
       <form
@@ -129,6 +129,7 @@ function Announcements() {
                 setEditingAnnouncement(null);
                 setNewAnnouncement({ a_title: '', a_body: '' });
               }}
+              className="cancel-button"
             >
               Cancel
             </button>
@@ -138,10 +139,10 @@ function Announcements() {
 
       {/* List of announcements */}
       <div>
-        <h2>Announcement List</h2>
+        <h2 className="title">Announcement List</h2>
         <ul>
           {announcements.map((announcement) => (
-            <li key={announcement._id}>
+            <li key={announcement._id} className="list">
               <h3>{announcement.a_title}</h3>
               <p>{announcement.a_body}</p>
               <p>
@@ -154,13 +155,13 @@ function Announcements() {
                 </p>
               )}
               <button
-                class="ed-button"
+                className="btn edit-btn"
                 onClick={() => handleEditAnnouncement(announcement)}
               >
                 Edit
               </button>
               <button
-                class="ed-button"
+                className="btn delete-btn"
                 onClick={() => handleDeleteAnnouncement(announcement._id)}
               >
                 Delete

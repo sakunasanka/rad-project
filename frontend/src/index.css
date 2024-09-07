@@ -1,40 +1,13 @@
-/* Auth Links Styling */
-.auth-links {
-  display: flex;
-  gap: 15px;
-}
-
-.auth-links .nav-link {
-  display: inline-block;
-  padding: 10px 20px;
-  color: #fff;
-  background-color: #3498db; /* Primary button color */
-  text-decoration: none;
-  border-radius: 5px;
-  font-family: 'Poppins', sans-serif;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  font-size: 16px;
-}
-
-.auth-links .nav-link:hover {
-  background-color: #2980b9; /* Darker blue on hover */
-  transform: translateY(-3px); /* Subtle hover effect */
-}
-
-.auth-links .nav-link:active {
-  background-color: #1f6391; /* Even darker blue on click */
-  transform: translateY(0);
-}
-
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: 'Poppins', sans-serif;
-
 }
 
-/* Sidebar Styling */
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/*------------------------NavBar and SideBar--------------------------------------*/
 .sidebar {
   position: fixed;
   top: 0;
@@ -46,10 +19,8 @@
   transform: translateX(-100%);
   transition: transform 0.3s ease;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-  font-family: 'Poppins', sans-serif; /* Match font family */
-  z-index: 2; /* Ensure sidebar is above the background but below content */
-
-  z-index: 1;
+  font-family: 'Poppins', sans-serif;
+  z-index: 2;
 }
 
 .sidebar.open {
@@ -62,8 +33,7 @@
   padding: 15px 20px;
   text-decoration: none;
   font-size: 18px;
-
-
+  font-family: 'Poppins', sans-serif;
   transition: background-color 0.3s ease;
 }
 
@@ -85,19 +55,16 @@
   left: 15px;
   z-index: 1000;
   transition: background-color 0.3s ease;
-
-
+  font-family: 'Poppins', sans-serif;
 }
 
 .toggle-button:hover {
   background-color: #14242e;
 }
 
-/* Content Styling */
 .container {
   margin-left: 270px;
   transition: margin-left 0.3s ease;
-  /* position: fixed; */
 }
 
 .sidebar.open~.container {
@@ -109,8 +76,7 @@ header {
   padding: 20px;
   color: white;
   position: relative;
-
-
+  font-family: 'Poppins', sans-serif;
 }
 
 header .container {
@@ -127,210 +93,15 @@ header .container {
   border: none;
   border-radius: 4px;
   cursor: pointer;
-
+  font-family: 'Poppins', sans-serif;
 }
 
 .logout-button:hover {
   background-color: #c0392b;
 }
 
-/*page Styling*/
 
-.title,
-.sub-title {
-  text-align: center;
-  margin: 36px;
-
-}
-
-.page-container {
-  display: grid;
-  grid-template-rows: auto auto;
-  margin: 0 auto;
-
-
-  width: 80vw;
-  max-width: 600px;
-}
-
-
-/* General Page Styling */
-.page-background {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  background-image: url('././Images/A.jpg'); /* Replace with your image path */
-  background-color: #0b233b; /* Fallback background color */
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-/* Form Styling */
-form {
-  width: 100%;
-  /* max-width: 600px; */
-  /* Adjust based on your preference */
-  margin: 0 auto;
-  padding: 20px;
-  z-index: 1; /* Ensure background is behind content */
-}
-
-.page-background::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5); /* Black overlay with 50% opacity */
-  z-index: 1; /* Make sure the overlay is below the content */
-}
-
-/* Ensure that all content is above the overlay */
-.page-background > * {
-  position: relative;
-  z-index: 2;
-}
-
-/* Specific styles for forms on pages with background */
-form {
-  width: 100%;
-  max-width: 400px;
-  padding: 30px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  background-color: #ffffff;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-  z-index: 3; /* Ensure the form is on top of the overlay */
-  border: 1px solid #ddd;
-  /* Light grey border */
-  border-radius: 8px;
-  /* Rounded corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  /* Subtle shadow for depth */
-  background-color: #fff;
-  /* White background */
-
-
-}
-
-/* Styling form elements */
-form label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: bold;
-}
-
-form input {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 12px;
-  border: 1px solid #ccc;
-  /* Light grey border for inputs */
-  border-radius: 4px;
-  /* Slightly rounded corners */
-
-
-}
-
-.btn {
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  outline: none;
-  background: none;
-  transition: background-color 0.3s ease;
-
-}
-
-.form-btn {
-  padding: 10px 20px;
-  color: #fff;
-  background-color: #007bff;
-  /* Primary blue color */
-  font-size: 16px;
-
-}
-
-.form-btn:hover {
-  background-color: #0056b3;
-  /* Darker blue on hover */
-}
-
-.cancel-btn {
-  padding: 10px 20px;
-  color: #fff;
-  background-color: #df9b35;
-  /* Primary blue color */
-  font-size: 16px;
-  margin-left: 10px;
-}
-
-.cancel-btn:hover {
-  background-color: hsl(36, 73%, 34%);
-  /* Darker grey on hover */
-}
-
-
-
-/* Styling the list of items */
-ul {
-  list-style-type: none;
-  
-}
-
-.list {
-  
-  padding: 20px;
-  border: 1px solid #ddd;
-  
-  border-radius: 8px;
-  /* Rounded corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  /* Subtle shadow for depth */
-  background-color: #fff;
-  /* White background */
-  margin-bottom: 10px;
-  /* Light grey border between items */
-  padding: 10px 50px;
-}
-
-.list p {
-
-  padding: 5px 0;
-}
-
-
-.edit-btn {
-
-  background-color: #3498db;
-  padding: 4px 8px;
-  margin-right: 5px;
-  color: white;
-
-}
-
-.edit-btn:hover {
-  background-color: hsl(204, 70%, 33%);
-}
-
-.delete-btn {
-
-  background-color: #e74c3c;
-  padding: 4px 8px;
-  margin-right: 5px;
-  color: white;
-
-}
-
-.delete-btn:hover {
-  background-color: hsl(6, 78%, 37%);
-}
-
-
-/* Main container styling with dark overlay */
+/*-------------------------login Page-------------------------------------*/
 .Main-container {
   position: relative;
   display: flex;
@@ -339,12 +110,12 @@ ul {
   justify-content: center;
   min-height: 100vh;
   background-image: url('././Images/BG.jpg');
-  background-color: #0b233b; /* Fallback background color */
+  background-color: #0b233b;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   padding: 20px;
-  z-index: 1; /* Ensure background is behind content */
+  z-index: 1;
 }
 
 .Main-container::before {
@@ -354,36 +125,99 @@ ul {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5); /* Black overlay with 50% opacity */
-  z-index: 1; /* Make sure the overlay is below the content */
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
 }
 
-/* Ensure that all content is above the overlay */
-.Main-container > * {
+.Main-container>* {
   position: relative;
   z-index: 2;
 }
 
-/* Styling for titles and descriptions */
-.A {
-  font-size: 90px; /* Large font */
+/* WelcomeBack Title */
+.welcome {
+  font-size: 90px;
   font-weight: bolder;
-  color: #38ad3e; /* Dark shade for title */
+  color: #38ad3e;
   margin-bottom: 10px;
-  font-family: 'Poppins', sans-serif; /* Consistent font */
+  font-family: 'Poppins', sans-serif;
   text-align: center;
 }
 
-.B {
-  font-size: 30px;
-  font-weight: bolder;
-  color: #191925; /* Soft grey for description */
-  font-family: 'Poppins', sans-serif; /* Consistent font */
-  margin-bottom: 20px;
+/* Error message styling */
+.error {
+  color: #e74
+}
+
+/*--------------------------Common------------------------------------*/
+
+.page-background {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-image: url('././Images/A.jpg');
+  background-color: #0b233b;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding: 20px;
+  z-index: 1;
+}
+
+.page-background::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.page-background>* {
+  position: relative;
+  z-index: 2;
+}
+
+.title,
+.sub-title {
+  color: white;
   text-align: center;
 }
 
-/* Form input fields */
+
+
+.btn {
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+  background: none;
+  transition: background-color 0.3s ease;
+}
+
+/*-------------------------------Forms-------------------------------*/
+form {
+  width: 100%;
+  max-width: 400px;
+  padding: 30px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  z-index: 3;
+}
+
+form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
 form input {
   width: 100%;
   padding: 12px;
@@ -393,11 +227,10 @@ form input {
   font-family: 'Poppins', sans-serif;
 }
 
-/* Submit button styling */
 form button {
   width: 100%;
   padding: 12px;
-  background-color: #38ad3e; /* Blue color */
+  background-color: #38ad3e;
   color: white;
   border: none;
   border-radius: 5px;
@@ -405,13 +238,168 @@ form button {
   font-size: 1.2rem;
   font-family: 'Poppins', sans-serif;
   transition: background-color 0.3s ease;
+  margin: 3px 0;
 }
 
 form button:hover {
-  background-color: #151b3d; /* Darker blue on hover */
+  background-color: hsl(123, 51%, 35%);
 }
 
-/* Error message styling */
-.error {
-  color: #e74
+form .cancel-button {
+  background-color: #e78f3c;
+}
+
+form .cancel-button:hover {
+  background-color: hsl(29, 78%, 47%);
+}
+
+/*-------------------------------List-------------------------------*/
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+
+
+.list {
+
+  max-width: 400px;
+  min-width: 300px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  margin-bottom: 10px;
+  padding: 10px 50px;
+}
+
+.list p {
+  margin: 0;
+  padding: 5px 0;
+}
+
+.edit-btn {
+  background-color: hsl(123, 51%, 45%);
+  padding: 4px 8px;
+  margin-right: 5px;
+  color: white;
+}
+
+.edit-btn:hover {
+  background-color: hsl(123, 51%, 35%);
+}
+
+.delete-btn {
+  background-color: #e74c3c;
+  padding: 4px 8px;
+  margin-right: 5px;
+  color: white;
+}
+
+.delete-btn:hover {
+  background-color: hsl(6, 78%, 37%);
+}
+
+/*courselist only*/
+.update-btn {
+  background-color: hsl(123, 51%, 45%);
+  padding: 4px 8px;
+  margin-right: 5px;
+  color: white;
+}
+
+.update-btn:hover {
+  background-color: hsl(123, 51%, 35%);
+}
+
+.cancel-btn {
+  background-color: #e78f3c;
+  padding: 4px 8px;
+  margin-right: 5px;
+  color: white;
+}
+
+.cancel-btn:hover {
+  background-color: hsl(29, 78%, 47%);
+}
+
+/*-----------------------------Footer---------------------------------*/
+
+.footer {
+  background-color: #f8f9fa;
+  padding: 20px 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 -1px 6px rgba(0, 0, 0, 0.1);
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-links a {
+  margin: 0 15px;
+  color: #333;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.footer-info p {
+  margin-top: 15px;
+  color: #666;
+  font-size: 14px;
+}
+
+
+/*--------------------------------------------------------------*/
+/* Auth Links Styling */
+.auth-links {
+  display: flex;
+  gap: 15px;
+}
+
+.auth-links .nav-link {
+  display: inline-block;
+  padding: 10px 20px;
+  color: #fff;
+  background-color: #3498db;
+  text-decoration: none;
+  border-radius: 5px;
+  font-family: 'Poppins', sans-serif;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-size: 16px;
+}
+
+.auth-links .nav-link:hover {
+  background-color: #2980b9;
+  transform: translateY(-3px);
+}
+
+.auth-links .nav-link:active {
+  background-color: #1f6391;
+  transform: translateY(0);
+}
+
+
+
+
+.B {
+  font-size: 30px;
+  font-weight: bolder;
+  color: #191925;
+  /* Soft grey for description */
+  font-family: 'Poppins', sans-serif;
+  /* Consistent font */
+  margin-bottom: 20px;
+  text-align: center;
 }
