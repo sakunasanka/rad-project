@@ -81,7 +81,7 @@ function Announcements() {
   }, []);
 
   return (
-    <div>
+    <div class="page-background">
       <h1>Announcements</h1>
 
       {/* Form for creating or updating an announcement */}
