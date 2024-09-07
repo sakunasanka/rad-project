@@ -93,121 +93,117 @@ function Teachers() {
     <div>
       <h1>Teachers</h1>
 
-      <div className="home">
-        <div className="card">
-          {/* Form for creating or updating a teacher */}
-          <form onSubmit={handleCreateOrUpdateTeacher}>
-            <div>
-              <label htmlFor="name">Name:</label>
-              <input
-                type="text"
-                id="name"
-                value={newTeacher.name}
-                onChange={(e) =>
-                  setNewTeacher({ ...newTeacher, name: e.target.value })
-                }
-                required
-              />
-            </div>
-            <div>
-              <label htmlFor="country">Country:</label>
-              <input
-                type="text"
-                id="country"
-                value={newTeacher.country}
-                onChange={(e) =>
-                  setNewTeacher({ ...newTeacher, country: e.target.value })
-                }
-                required
-              />
-            </div>
-            <div>
-              <label htmlFor="birth_Date">Birth Date:</label>
-              <input
-                type="date"
-                id="birth_Date"
-                value={newTeacher.birth_Date}
-                onChange={(e) =>
-                  setNewTeacher({ ...newTeacher, birth_Date: e.target.value })
-                }
-                required
-              />
-            </div>
-            <div>
-              <label htmlFor="email">Email:</label>
-              <input
-                type="email"
-                id="email"
-                value={newTeacher.email}
-                onChange={(e) =>
-                  setNewTeacher({ ...newTeacher, email: e.target.value })
-                }
-                required
-              />
-            </div>
-            <div>
-              <label htmlFor="Subjects">Subjects:</label>
-              <input
-                type="text"
-                id="Subjects"
-                value={newTeacher.Subjects}
-                onChange={(e) =>
-                  setNewTeacher({ ...newTeacher, Subjects: e.target.value })
-                }
-                required
-              />
-            </div>
-            <div>
-              <button type="submit">
-                {editingTeacher ? 'Update Teacher' : 'Add Teacher'}
-              </button>
-              {editingTeacher && (
-                <button
-                  type="button"
-                  onClick={() => {
-                    setEditingTeacher(null);
-                    setNewTeacher({
-                      name: '',
-                      country: '',
-                      birth_Date: '',
-                      email: '',
-                      Subjects: '',
-                    });
-                  }}
-                >
-                  Cancel
-                </button>
-              )}
-            </div>
-          </form>
+      {/* Form for creating or updating a teacher */}
+      <form onSubmit={handleCreateOrUpdateTeacher}>
+        <div>
+          <label htmlFor="name">Name:</label>
+          <input
+            type="text"
+            id="name"
+            value={newTeacher.name}
+            onChange={(e) =>
+              setNewTeacher({ ...newTeacher, name: e.target.value })
+            }
+            required
+          />
         </div>
+        <div>
+          <label htmlFor="country">Country:</label>
+          <input
+            type="text"
+            id="country"
+            value={newTeacher.country}
+            onChange={(e) =>
+              setNewTeacher({ ...newTeacher, country: e.target.value })
+            }
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="birth_Date">Birth Date:</label>
+          <input
+            type="date"
+            id="birth_Date"
+            value={newTeacher.birth_Date}
+            onChange={(e) =>
+              setNewTeacher({ ...newTeacher, birth_Date: e.target.value })
+            }
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            value={newTeacher.email}
+            onChange={(e) =>
+              setNewTeacher({ ...newTeacher, email: e.target.value })
+            }
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="Subjects">Subjects:</label>
+          <input
+            type="text"
+            id="Subjects"
+            value={newTeacher.Subjects}
+            onChange={(e) =>
+              setNewTeacher({ ...newTeacher, Subjects: e.target.value })
+            }
+            required
+          />
+        </div>
+        <div>
+          <button type="submit">
+            {editingTeacher ? 'Update Teacher' : 'Add Teacher'}
+          </button>
+          {editingTeacher && (
+            <button
+              type="button"
+              onClick={() => {
+                setEditingTeacher(null);
+                setNewTeacher({
+                  name: '',
+                  country: '',
+                  birth_Date: '',
+                  email: '',
+                  Subjects: '',
+                });
+              }}
+            >
+              Cancel
+            </button>
+          )}
+        </div>
+      </form>
 
-        <div className="card">
-          <h2>Teacher List</h2>
-          <ul>
-            {teachers.map((teacher) => (
-              <li key={teacher._id}>
-                <p>Name: {teacher.name}</p>
-                <p>Country: {teacher.country}</p>
-                <p>Birth Date: {teacher.birth_Date}</p>
-                <p>Email: {teacher.email}</p>
-                <p>Subjects: {teacher.Subjects}</p>
-                <button
-                  class="ed-button"
-                  onClick={() => handleDeleteTeacher(teacher._id)}
-                >
-                  Delete
-                </button>
-                <button
-                  class="ed-button"
-                  onClick={() => handleEditTeacher(teacher)}
-                >
-                  Edit
-                </button>
-              </li>
-            ))}
-          </ul>
-        </div>
+      <div>
+        <h2>Teacher List</h2>
+        <ul>
+          {teachers.map((teacher) => (
+            <li key={teacher._id}>
+              <p>Name: {teacher.name}</p>
+              <p>Country: {teacher.country}</p>
+              <p>Birth Date: {teacher.birth_Date}</p>
+              <p>Email: {teacher.email}</p>
+              <p>Subjects: {teacher.Subjects}</p>
+              <button
+                class="ed-button"
+                onClick={() => handleDeleteTeacher(teacher._id)}
+              >
+                Delete
+              </button>
+              <button
+                class="ed-button"
+                onClick={() => handleEditTeacher(teacher)}
+              >
+                Edit
+              </button>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );
