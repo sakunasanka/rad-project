@@ -8,30 +8,33 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     await login(email, password);
   };
 
   return (
-    <form className="login" onSubmit={handleSubmit}>
-      <h3>Log In</h3>
-
-      <label>Email address:</label>
-      <input
-        type="email"
-        onChange={(e) => setEmail(e.target.value)}
-        value={email}
-      />
-      <label>Password:</label>
-      <input
-        type="password"
-        onChange={(e) => setPassword(e.target.value)}
-        value={password}
-      />
-
-      <button disabled={isLoading}>Log in</button>
-      {error && <div className="error">{error}</div>}
-    </form>
+    <div className="Main-container">
+      <div className="description">
+        <div class="A">Welcome Back!</div>
+        <div class="B">Please enter your email and password to access your account.</div>
+      </div>
+      <form className="login" onSubmit={handleSubmit}>
+        <h3>Log In</h3>
+        <label>Email address:</label>
+        <input
+          type="email"
+          onChange={(e) => setEmail(e.target.value)}
+          value={email}
+        />
+        <label>Password:</label>
+        <input
+          type="password"
+          onChange={(e) => setPassword(e.target.value)}
+          value={password}
+        />
+        <button disabled={isLoading}>Log in</button>
+        {error && <div className="error">{error}</div>}
+      </form>
+    </div>
   );
 };
 
