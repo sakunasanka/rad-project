@@ -202,9 +202,13 @@ ul li button {
   align-items: center;
   justify-content: center;
   min-height: 100vh; /* Full screen height */
-  background-color: #0b233b; /* Light background color */
+  background-image: url('././Images/BG.jpg');
+  background-repeat: no-repeat; /* Prevent image repetition */
+  background-size: cover; /* Make the image cover the entire background */
+  background-position: center; /* Center the image */
   padding: 20px;
 }
+
 
 /* Form container styling */
 form {
@@ -219,9 +223,9 @@ form {
 
 /* Styling the h2 tag for title */
 .A {
-  font-size: 70px; /* Large font */
+  font-size: 90px; /* Large font */
   font-weight:bolder;
-  color: #b8cde2; /* Dark shade for title */
+  color: #38ad3e; /* Dark shade for title */
   margin-bottom: 10px;
   font-family: 'Poppins', sans-serif; /* Consistent font */
   text-align: center;
@@ -229,8 +233,9 @@ form {
 
 /* Styling for the description text */
 .B {
-  font-size: 1.1rem;
-  color: #2be6f3; /* Soft grey for description */
+  font-size: 30px;
+  font-weight:bolder;
+  color: #191925; /* Soft grey for description */
   font-family: 'Poppins', sans-serif; /* Consistent font */
   margin-bottom: 20px;
   text-align: center;
@@ -241,7 +246,7 @@ form input {
   width: 100%;
   padding: 12px;
   margin-bottom: 15px;
-  border: 1px solid #308fe7;
+  border: 1px solid #38ad3e;
   border-radius: 5px;
   font-family: 'Poppins', sans-serif;
 }
@@ -250,7 +255,7 @@ form input {
 form button {
   width: 100%;
   padding: 12px;
-  background-color: #2980b9; /* Blue color */
+  background-color: #38ad3e; /* Blue color */
   color: white;
   border: none;
   border-radius: 5px;
