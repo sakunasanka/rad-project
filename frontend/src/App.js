@@ -11,6 +11,7 @@ import Instructors from './pages/Instructors';
 import Navbar from './components/Navbar';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import Footer from './components/Footer';
 
 function App() {
   const { user } = useAuthContext();
@@ -51,6 +52,7 @@ function App() {
             />
           </Routes>
         </div>
+        <Footer/>
       </BrowserRouter>
     </div>
   );
