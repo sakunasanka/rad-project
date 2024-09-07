@@ -90,7 +90,7 @@ function Teachers() {
   }, []);
 
   return (
-    <div>
+    <div class="page-background">
       <h1>Teachers</h1>
 
       {/* Form for creating or updating a teacher */}

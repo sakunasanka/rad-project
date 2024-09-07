@@ -95,7 +95,7 @@ function Instructors() {
   }, []);
 
   return (
-    <div>
+    <div class="page-background">
       <h1>Instructors</h1>
 
       {/* Form for creating or updating an instructor */}

@@ -86,7 +86,7 @@ function Students() {
   }, []);
 
   return (
-    <div>
+    <div class="page-background">
       <h1>Students</h1>
 
       {/* Form for creating or updating a student */}

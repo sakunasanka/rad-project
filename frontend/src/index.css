@@ -26,8 +26,6 @@
   transform: translateY(0);
 }
 
-
-
 /* Sidebar Styling */
 .sidebar {
   position: fixed;
@@ -41,6 +39,7 @@
   transition: transform 0.3s ease;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
   font-family: 'Poppins', sans-serif; /* Match font family */
+  z-index: 2; /* Ensure sidebar is above the background but below content */
 }
 
 .sidebar.open {
@@ -64,7 +63,7 @@
 
 /* Toggle Button */
 .toggle-button {
-  background-color: #2980b9;
+  background-color: #08ad5b;
   color: white;
   padding: 10px 20px;
   border: none;
@@ -79,7 +78,7 @@
 }
 
 .toggle-button:hover {
-  background-color: #1f6391;
+  background-color: #14242e;
 }
 
 /* Content Styling */
@@ -93,7 +92,7 @@
 }
 
 header {
-  background-color: #3498db;
+  background-color: #268322;
   padding: 20px;
   color: white;
   position: relative;
@@ -121,17 +120,50 @@ header .container {
   background-color: #c0392b;
 }
 
-/* Form Styling */
-form {
-  width: 80%;
-  max-width: 600px; /* Adjust based on your preference */
-  margin: 0 auto;
+/* General Page Styling */
+.page-background {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-image: url('././Images/A.jpg'); /* Replace with your image path */
+  background-color: #0b233b; /* Fallback background color */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   padding: 20px;
-  border: 1px solid #ddd; /* Light grey border */
-  border-radius: 8px; /* Rounded corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-  background-color: #fff; /* White background */
-  font-family: 'Poppins', sans-serif; /* Match font family */
+  z-index: 1; /* Ensure background is behind content */
+}
+
+.page-background::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Black overlay with 50% opacity */
+  z-index: 1; /* Make sure the overlay is below the content */
+}
+
+/* Ensure that all content is above the overlay */
+.page-background > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Specific styles for forms on pages with background */
+form {
+  width: 100%;
+  max-width: 400px;
+  padding: 30px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  z-index: 3; /* Ensure the form is on top of the overlay */
 }
 
 /* Styling form elements */
@@ -195,46 +227,53 @@ ul li button {
   font-family: 'Poppins', sans-serif; /* Match font family */
 }
 
-/* Main container styling */
+/* Main container styling with dark overlay */
 .Main-container {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh; /* Full screen height */
+  min-height: 100vh;
   background-image: url('././Images/BG.jpg');
-  background-repeat: no-repeat; /* Prevent image repetition */
-  background-size: cover; /* Make the image cover the entire background */
-  background-position: center; /* Center the image */
+  background-color: #0b233b; /* Fallback background color */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   padding: 20px;
+  z-index: 1; /* Ensure background is behind content */
 }
 
-
-/* Form container styling */
-form {
-  width: 100%;
-  max-width: 400px;
-  padding: 30px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  background-color: #ffffff;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+.Main-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Black overlay with 50% opacity */
+  z-index: 1; /* Make sure the overlay is below the content */
 }
 
-/* Styling the h2 tag for title */
+/* Ensure that all content is above the overlay */
+.Main-container > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Styling for titles and descriptions */
 .A {
   font-size: 90px; /* Large font */
-  font-weight:bolder;
+  font-weight: bolder;
   color: #38ad3e; /* Dark shade for title */
   margin-bottom: 10px;
   font-family: 'Poppins', sans-serif; /* Consistent font */
   text-align: center;
 }
 
-/* Styling for the description text */
 .B {
   font-size: 30px;
-  font-weight:bolder;
+  font-weight: bolder;
   color: #191925; /* Soft grey for description */
   font-family: 'Poppins', sans-serif; /* Consistent font */
   margin-bottom: 20px;
@@ -271,19 +310,5 @@ form button:hover {
 
 /* Error message styling */
 .error {
-  color: #e74c3c; /* Red for error message */
-  font-size: 1rem;
-  margin-top: 10px;
-  text-align: center;
+  color: #e74
 }
-
-/* Password guidelines */
-#password {
-  font-size: 0.9rem;
-  color: #7f8c8d;
-  margin-bottom: 15px;
-  text-align: center;
-}
-
-
-
