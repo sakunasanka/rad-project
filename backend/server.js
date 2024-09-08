@@ -36,7 +36,7 @@ app.use('/api/instructors',instructorsRoutes);
 //Connet to db
 mongoose.connect(process.env.MONG_URI)
     .then(() => {
-        //lisitn for requests...
+        //listen for requests...
         app.listen(process.env.PORT, () => {
             console.log('Connected to Database & Listeneing on port :', process.env.PORT);
         });

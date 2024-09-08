@@ -10,7 +10,6 @@ import Teachers from './pages/Teachers'; // Import the Teachers component
 import Instructors from './pages/Instructors';
 import Navbar from './components/Navbar';
 import Login from './pages/Login';
-import Signup from './pages/Signup';
 import Footer from './components/Footer';
 
 function App() {
@@ -45,10 +44,6 @@ function App() {
             <Route
               path="/login"
               element={!user ? <Login /> : <Navigate to="/" />}
-            />
-            <Route
-              path="/signup"
-              element={!user ? <Signup /> : <Navigate to="/" />}
             />
           </Routes>
         </div>
