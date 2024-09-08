@@ -1,4 +1,3 @@
-const { Timestamp } = require('mongodb');
 const mongoose = require('mongoose');
 const uniqueValidator = require('mongoose-unique-validator');
 
@@ -45,7 +44,7 @@ const instructorSchema = new Schema(
       required: true,
     },
   },
-  { Timestamp: true }
+  { timestamps: true }
 );
 
 instructorSchema.plugin(uniqueValidator);

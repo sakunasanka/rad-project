@@ -9,10 +9,9 @@ const CourseDetails = ({ course }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [updatedCourse, setUpdatedCourse] = useState(course);
 
+  // Handle deleting the course
   const handleDeleteClick = async () => {
-    if (!user) {
-      return;
-    }
+    if (!user) return;
 
     const response = await fetch('/api/courses/' + course._id, {
       method: 'DELETE',
@@ -20,6 +19,7 @@ const CourseDetails = ({ course }) => {
         Authorization: `Bearer ${user.token}`,
       },
     });
+
     const json = await response.json();
 
     if (response.ok) {
@@ -27,19 +27,20 @@ const CourseDetails = ({ course }) => {
     }
   };
 
+  // Handle edit click - switch to edit mode
   const handleEditClick = () => {
     setIsEditing(true);
   };
 
+  // Handle cancel edit click - revert to view mode
   const handleCancelClick = () => {
     setIsEditing(false);
-    setUpdatedCourse(course);
+    setUpdatedCourse(course); // Reset the updatedCourse state to the original course
   };
 
+  // Handle updating the course
   const handleUpdateClick = async () => {
-    if (!user) {
-      return;
-    }
+    if (!user) return;
 
     const response = await fetch('/api/courses/' + course._id, {
       method: 'PATCH',
@@ -49,21 +50,26 @@ const CourseDetails = ({ course }) => {
         Authorization: `Bearer ${user.token}`,
       },
     });
+
     const json = await response.json();
 
     if (response.ok) {
       dispatch({ type: 'UPDATE_COURSE', payload: json });
+      setIsEditing(false); // Exit edit mode after successful update
     }
   };
 
+  // Handle input changes in edit mode
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUpdatedCourse({ ...updatedCourse, [name]: value });
   };
 
   return (
-    <div >
+    <div className="course-details">
       <h4>{isEditing ? 'Edit Course' : course.course_name}</h4>
+
+      {/* Editing state */}
       {isEditing ? (
         <div>
           <p>
@@ -86,23 +92,36 @@ const CourseDetails = ({ course }) => {
           </p>
         </div>
       ) : (
+        // Normal view state
         <p>
           <strong>Course ID: </strong>
           {course.course_id}
         </p>
       )}
+
+      {/* Display how long ago the course was created */}
       <p>
         {formatDistanceToNow(new Date(course.createdAt), { addSuffix: true })}
       </p>
+
+      {/* Edit, Update, and Cancel Buttons */}
       {isEditing ? (
         <div>
-          <button onClick={handleUpdateClick} className='btn update-btn'>Update Course</button>
-          <button onClick={handleCancelClick} className='btn cancel-btn'>Cancel</button>
+          <button onClick={handleUpdateClick} className="btn update-btn">
+            Update Course
+          </button>
+          <button onClick={handleCancelClick} className="btn cancel-btn">
+            Cancel
+          </button>
         </div>
       ) : (
         <div>
-          <button onClick={handleEditClick} className='btn edit-btn'>Edit</button>
-          <button onClick={handleDeleteClick} className='btn delete-btn'>Delete</button>
+          <button onClick={handleEditClick} className="btn edit-btn">
+            Edit
+          </button>
+          <button onClick={handleDeleteClick} className="btn delete-btn">
+            Delete
+          </button>
         </div>
       )}
     </div>

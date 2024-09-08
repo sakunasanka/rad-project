@@ -1,4 +1,3 @@
-const { Timestamp } = require('mongodb');
 const mongoose = require('mongoose')
 const uniqueValidator = require('mongoose-unique-validator');
 
@@ -38,7 +37,7 @@ const teacherSchema = new Schema({
         type : String,
         required : true
     }
-},{Timestamp:true})
+},{timestamps:true})
 
 teacherSchema.plugin(uniqueValidator);
 
