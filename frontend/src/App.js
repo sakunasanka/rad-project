@@ -11,6 +11,9 @@ import Instructors from './pages/Instructors';
 import Navbar from './components/Navbar';
 import Login from './pages/Login';
 import Footer from './components/Footer';
+import AboutUs from './pages/AboutUs';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+
 
 function App() {
   const { user } = useAuthContext();
@@ -46,8 +49,9 @@ function App() {
               element={!user ? <Login /> : <Navigate to="/" />}
             />
           </Routes>
+
         </div>
-        <Footer/>
+        <Footer />
       </BrowserRouter>
     </div>
   );
