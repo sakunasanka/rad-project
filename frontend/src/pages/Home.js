@@ -28,17 +28,17 @@ const Home = () => {
   }, [dispatch, user]);
 
   return (
-    <div class="page-background">
+    <div className="page-background">
       <h1 className="title">Courses</h1>
       <CourseForm />
-      <div >
+      <div>
         <h2 className="sub-title">Course List</h2>
         <ul>
           {courses &&
             courses.map((course) => (
-              <li className='list'>
-                <CourseDetails course={course} key={course._id} />
-                </li>
+              <li className="list" key={course._id}>
+                <CourseDetails course={course} />
+              </li>
             ))}
         </ul>
       </div>
