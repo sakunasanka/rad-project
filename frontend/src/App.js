@@ -48,6 +48,8 @@ function App() {
               path="/login"
               element={!user ? <Login /> : <Navigate to="/" />}
             />
+            <Route path="/about" element={<AboutUs />} />
+            <Route path="/privacy" element={<PrivacyPolicy />} />
           </Routes>
 
         </div>
