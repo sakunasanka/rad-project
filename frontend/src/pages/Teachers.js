@@ -79,7 +79,7 @@ function Teachers() {
     setNewTeacher({
       name: teacher.name,
       country: teacher.country,
-      birth_Date: teacher.birth_Date,
+      birth_Date: teacher.birth_Date.split('T')[0],
       email: teacher.email,
       Subjects: teacher.Subjects,
     });
@@ -90,7 +90,7 @@ function Teachers() {
   }, []);
 
   return (
-    <div class="page-background">
+    <div className="page-background">
       <h1 className="title">Teachers</h1>
 
       {/* Form for creating or updating a teacher */}
@@ -172,7 +172,7 @@ function Teachers() {
                   Subjects: '',
                 });
               }}
-              className='cancel-button'
+              className="cancel-button"
             >
               Cancel
             </button>
@@ -187,19 +187,19 @@ function Teachers() {
             <li key={teacher._id} className="list">
               <p>Name: {teacher.name}</p>
               <p>Country: {teacher.country}</p>
-              <p>Birth Date: {teacher.birth_Date}</p>
+              <p>Birth Date: {teacher.birth_Date.split('T')[0]}</p>
               <p>Email: {teacher.email}</p>
               <p>Subjects: {teacher.Subjects}</p>
 
               <button
-                class="btn edit-btn"
+                className="btn edit-btn"
                 onClick={() => handleEditTeacher(teacher)}
               >
                 Edit
               </button>
 
               <button
-                class="btn delete-btn"
+                className="btn delete-btn"
                 onClick={() => handleDeleteTeacher(teacher._id)}
               >
                 Delete
