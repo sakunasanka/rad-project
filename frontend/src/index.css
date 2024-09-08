@@ -218,7 +218,8 @@ form label {
   font-weight: bold;
 }
 
-form input {
+form input,
+form select {
   width: 100%;
   padding: 12px;
   margin-bottom: 15px;
@@ -265,7 +266,7 @@ ul {
 .list {
 
   max-width: 400px;
-  min-width: 300px;
+  min-width: 400px;
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 8px;
