@@ -1,4 +1,6 @@
 import React from 'react';
+ 
+
 
 const Footer = () => {
   return (
@@ -9,7 +11,7 @@ const Footer = () => {
           <a href="/privacy">Privacy Policy</a>
         </div>
         <div className="footer-info">
-          <p>&copy; {new Date().getFullYear()} School Admin Management System. All Rights Reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Horizon Academy. All Rights Reserved.</p>
         </div>
       </div>
     </footer>
