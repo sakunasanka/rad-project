@@ -28,15 +28,20 @@ const Home = () => {
   }, [dispatch, user]);
 
   return (
-    <div className="home">
-      <div className="courses">
-        <h1>Courses</h1>
-        {courses &&
-          courses.map((course) => (
-            <CourseDetails course={course} key={course._id} />
-          ))}
-      </div>
+    <div className="page-background">
+      <h1 className="title">Courses</h1>
       <CourseForm />
+      <div>
+        <h2 className="sub-title">Course List</h2>
+        <ul>
+          {courses &&
+            courses.map((course) => (
+              <li className="list" key={course._id}>
+                <CourseDetails course={course} />
+              </li>
+            ))}
+        </ul>
+      </div>
     </div>
   );
 };

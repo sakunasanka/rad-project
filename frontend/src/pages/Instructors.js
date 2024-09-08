@@ -3,12 +3,13 @@ import axios from 'axios';
 
 function Instructors() {
   const [instructors, setInstructors] = useState([]);
+  const [teachers, setTeachers] = useState([]);
   const [newInstructor, setNewInstructor] = useState({
     name: '',
     country: '',
     birth_Date: '',
     email: '',
-    Subjects: '',
+    teacherId: '',
   });
   const [editingInstructor, setEditingInstructor] = useState(null);
 
@@ -38,7 +39,7 @@ function Instructors() {
             country: '',
             birth_Date: '',
             email: '',
-            Subjects: '',
+            teacherId: '',
           });
           fetchInstructors(); // Refresh the instructor list
         })
@@ -55,7 +56,7 @@ function Instructors() {
             country: '',
             birth_Date: '',
             email: '',
-            Subjects: '',
+            teacherId: '',
           });
           fetchInstructors(); // Refresh the instructor list
         })
@@ -85,18 +86,31 @@ function Instructors() {
       country: instructor.country,
       birth_Date: instructor.birth_Date.split('T')[0], // Format date for input
       email: instructor.email,
-      Subjects: instructor.Subjects,
+      teacherId: instructor.teacherId,
     });
   };
 
   // Fetch instructors on component mount
+
   useEffect(() => {
     fetchInstructors();
+    fetchTeachers(); // Fetch the list of teachers when the component mounts
   }, []);
 
+  const fetchTeachers = () => {
+    axios
+      .get('/api/teachers')
+      .then((response) => {
+        setTeachers(response.data);
+      })
+      .catch((error) => {
+        console.error('Error fetching teachers:', error);
+      });
+  };
+
   return (
-    <div>
-      <h1>Instructors</h1>
+    <div className="page-background">
+      <h1 className="title">Instructors</h1>
 
       {/* Form for creating or updating an instructor */}
       <form onSubmit={handleCreateOrUpdateInstructor}>
@@ -131,7 +145,10 @@ function Instructors() {
             id="birth_Date"
             value={newInstructor.birth_Date}
             onChange={(e) =>
-              setNewInstructor({ ...newInstructor, birth_Date: e.target.value })
+              setNewInstructor({
+                ...newInstructor,
+                birth_Date: e.target.value,
+              })
             }
             required
           />
@@ -148,18 +165,26 @@ function Instructors() {
             required
           />
         </div>
+
         <div>
-          <label htmlFor="Subjects">Subjects:</label>
-          <input
-            type="text"
-            id="Subjects"
-            value={newInstructor.Subjects}
+          <label htmlFor="teacher">Assign Teacher:</label>
+          <select
+            id="teacher"
+            value={newInstructor.teacherId}
             onChange={(e) =>
-              setNewInstructor({ ...newInstructor, Subjects: e.target.value })
+              setNewInstructor({ ...newInstructor, teacherId: e.target.value })
             }
             required
-          />
+          >
+            <option value="">Select a Teacher</option>
+            {teachers.map((teacher) => (
+              <option key={teacher._id} value={teacher.name}>
+                {teacher.name}
+              </option>
+            ))}
+          </select>
         </div>
+
         <div>
           <button type="submit">
             {editingInstructor ? 'Update Instructor' : 'Add Instructor'}
@@ -174,9 +199,10 @@ function Instructors() {
                   country: '',
                   birth_Date: '',
                   email: '',
-                  Subjects: '',
+                  teacherId: '',
                 });
               }}
+              className="cancel-button"
             >
               Cancel
             </button>
@@ -185,19 +211,25 @@ function Instructors() {
       </form>
 
       <div>
-        <h2>Instructor List</h2>
+        <h2 className="sub-title">Instructor List</h2>
         <ul>
           {instructors.map((instructor) => (
-            <li key={instructor._id}>
+            <li key={instructor._id} className="list">
               <p>Name: {instructor.name}</p>
               <p>Country: {instructor.country}</p>
               <p>Birth Date: {instructor.birth_Date.split('T')[0]}</p>
               <p>Email: {instructor.email}</p>
-              <p>Subjects: {instructor.Subjects}</p>
-              <button onClick={() => handleEditInstructor(instructor)}>
+              <p>Teacher Name: {instructor.teacherId}</p>
+              <button
+                onClick={() => handleEditInstructor(instructor)}
+                className="btn edit-btn"
+              >
                 Edit
               </button>
-              <button onClick={() => handleDeleteInstructor(instructor._id)}>
+              <button
+                onClick={() => handleDeleteInstructor(instructor._id)}
+                className="btn delete-btn"
+              >
                 Delete
               </button>
             </li>
