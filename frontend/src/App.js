@@ -10,7 +10,6 @@ import Teachers from './pages/Teachers'; // Import the Teachers component
 import Instructors from './pages/Instructors';
 import Navbar from './components/Navbar';
 import Login from './pages/Login';
-import Signup from './pages/Signup';
 import Footer from './components/Footer';
 import AboutUs from './pages/AboutUs';
 import PrivacyPolicy from './pages/PrivacyPolicy';
@@ -49,23 +48,6 @@ function App() {
               path="/login"
               element={!user ? <Login /> : <Navigate to="/" />}
             />
-            <Route
-              path="/signup"
-              element={!user ? <Signup /> : <Navigate to="/" />}
-            />
-            <Route
-              path="/about"
-              element= <AboutUs/>
-            />
-            <Route
-              path="/about"
-              element= <AboutUs/>
-            />
-            <Route
-              path="/privacy"
-              element= <PrivacyPolicy/>
-            />
-            
           </Routes>
 
         </div>
