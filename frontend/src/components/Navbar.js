@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useLogout } from '../hooks/useLogout';
 import { useAuthContext } from '../hooks/useAuthContext';
+import logo from "../Images/logo.png"
 
 const Navbar = () => {
   const { logout } = useLogout();
@@ -20,6 +21,7 @@ const Navbar = () => {
     <>
       <header>
         <div className="container">
+          <img src={logo} alt="logo" width="100px" />
           <h1>School Admin Management System</h1>
           <button className="toggle-button" onClick={toggleSidebar}>
             ☰
