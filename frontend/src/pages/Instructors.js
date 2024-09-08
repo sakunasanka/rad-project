@@ -1,0 +1,243 @@
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+
+function Instructors() {
+  const [instructors, setInstructors] = useState([]);
+  const [teachers, setTeachers] = useState([]);
+  const [newInstructor, setNewInstructor] = useState({
+    name: '',
+    country: '',
+    birth_Date: '',
+    email: '',
+    teacherId: '',
+  });
+  const [editingInstructor, setEditingInstructor] = useState(null);
+
+  // Fetch instructors from the server
+  const fetchInstructors = () => {
+    axios
+      .get('/api/instructors')
+      .then((response) => {
+        setInstructors(response.data);
+      })
+      .catch((error) => {
+        console.error('Error fetching instructors:', error);
+      });
+  };
+
+  // Handle creating or updating an instructor
+  const handleCreateOrUpdateInstructor = (e) => {
+    e.preventDefault();
+    if (editingInstructor) {
+      // Update the existing instructor
+      axios
+        .patch(`/api/instructors/${editingInstructor._id}`, newInstructor)
+        .then(() => {
+          setEditingInstructor(null);
+          setNewInstructor({
+            name: '',
+            country: '',
+            birth_Date: '',
+            email: '',
+            teacherId: '',
+          });
+          fetchInstructors(); // Refresh the instructor list
+        })
+        .catch((error) => {
+          console.error('Error updating instructor:', error);
+        });
+    } else {
+      // Create a new instructor
+      axios
+        .post('/api/instructors', newInstructor)
+        .then(() => {
+          setNewInstructor({
+            name: '',
+            country: '',
+            birth_Date: '',
+            email: '',
+            teacherId: '',
+          });
+          fetchInstructors(); // Refresh the instructor list
+        })
+        .catch((error) => {
+          console.error('Error creating instructor:', error);
+        });
+    }
+  };
+
+  // Handle deleting an instructor
+  const handleDeleteInstructor = (id) => {
+    axios
+      .delete(`/api/instructors/${id}`)
+      .then(() => {
+        fetchInstructors(); // Refresh the instructor list
+      })
+      .catch((error) => {
+        console.error('Error deleting instructor:', error);
+      });
+  };
+
+  // Handle editing an instructor
+  const handleEditInstructor = (instructor) => {
+    setEditingInstructor(instructor);
+    setNewInstructor({
+      name: instructor.name,
+      country: instructor.country,
+      birth_Date: instructor.birth_Date.split('T')[0], // Format date for input
+      email: instructor.email,
+      teacherId: instructor.teacherId,
+    });
+  };
+
+  // Fetch instructors on component mount
+
+  useEffect(() => {
+    fetchInstructors();
+    fetchTeachers(); // Fetch the list of teachers when the component mounts
+  }, []);
+
+  const fetchTeachers = () => {
+    axios
+      .get('/api/teachers')
+      .then((response) => {
+        setTeachers(response.data);
+      })
+      .catch((error) => {
+        console.error('Error fetching teachers:', error);
+      });
+  };
+
+  return (
+    <div className="page-background">
+      <h1 className="title">Instructors</h1>
+
+      {/* Form for creating or updating an instructor */}
+      <form onSubmit={handleCreateOrUpdateInstructor}>
+        <div>
+          <label htmlFor="name">Name:</label>
+          <input
+            type="text"
+            id="name"
+            value={newInstructor.name}
+            onChange={(e) =>
+              setNewInstructor({ ...newInstructor, name: e.target.value })
+            }
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="country">Country:</label>
+          <input
+            type="text"
+            id="country"
+            value={newInstructor.country}
+            onChange={(e) =>
+              setNewInstructor({ ...newInstructor, country: e.target.value })
+            }
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="birth_Date">Birth Date:</label>
+          <input
+            type="date"
+            id="birth_Date"
+            value={newInstructor.birth_Date}
+            onChange={(e) =>
+              setNewInstructor({
+                ...newInstructor,
+                birth_Date: e.target.value,
+              })
+            }
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            value={newInstructor.email}
+            onChange={(e) =>
+              setNewInstructor({ ...newInstructor, email: e.target.value })
+            }
+            required
+          />
+        </div>
+
+        <div>
+          <label htmlFor="teacher">Assign Teacher:</label>
+          <select
+            id="teacher"
+            value={newInstructor.teacherId}
+            onChange={(e) =>
+              setNewInstructor({ ...newInstructor, teacherId: e.target.value })
+            }
+            required
+          >
+            <option value="">Select a Teacher</option>
+            {teachers.map((teacher) => (
+              <option key={teacher._id} value={teacher.name}>
+                {teacher.name}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div>
+          <button type="submit">
+            {editingInstructor ? 'Update Instructor' : 'Add Instructor'}
+          </button>
+          {editingInstructor && (
+            <button
+              type="button"
+              onClick={() => {
+                setEditingInstructor(null);
+                setNewInstructor({
+                  name: '',
+                  country: '',
+                  birth_Date: '',
+                  email: '',
+                  teacherId: '',
+                });
+              }}
+              className="cancel-button"
+            >
+              Cancel
+            </button>
+          )}
+        </div>
+      </form>
+
+      <div>
+        <h2 className="sub-title">Instructor List</h2>
+        <ul>
+          {instructors.map((instructor) => (
+            <li key={instructor._id} className="list">
+              <p>Name: {instructor.name}</p>
+              <p>Country: {instructor.country}</p>
+              <p>Birth Date: {instructor.birth_Date.split('T')[0]}</p>
+              <p>Email: {instructor.email}</p>
+              <p>Teacher Name: {instructor.teacherId}</p>
+              <button
+                onClick={() => handleEditInstructor(instructor)}
+                className="btn edit-btn"
+              >
+                Edit
+              </button>
+              <button
+                onClick={() => handleDeleteInstructor(instructor._id)}
+                className="btn delete-btn"
+              >
+                Delete
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+}
+
+export default Instructors;
