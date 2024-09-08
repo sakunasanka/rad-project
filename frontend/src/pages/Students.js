@@ -76,7 +76,7 @@ function Students() {
     setNewStudent({
       name: student.name,
       country: student.country,
-      birth_Date: student.birth_Date,
+      birth_Date: student.birth_Date.split('T')[0],
       email: student.email,
     });
   };
@@ -86,8 +86,8 @@ function Students() {
   }, []);
 
   return (
-    <div>
-      <h1>Students</h1>
+    <div className="page-background">
+      <h1 className="title">Students</h1>
 
       {/* Form for creating or updating a student */}
       <form onSubmit={handleCreateOrUpdateStudent}>
@@ -155,6 +155,7 @@ function Students() {
                   email: '',
                 });
               }}
+              className="cancel-button"
             >
               Cancel
             </button>
@@ -163,25 +164,26 @@ function Students() {
       </form>
 
       <div>
-        <h2>Student List</h2>
+        <h2 className="sub-title">Student List</h2>
         <ul>
           {students.map((student) => (
-            <li key={student._id}>
+            <li key={student._id} className="list">
               <p>Name: {student.name}</p>
               <p>Country: {student.country}</p>
-              <p>Birth Date: {student.birth_Date}</p>
+              <p>Birth Date: {student.birth_Date.split('T')[0]}</p>
               <p>Email: {student.email}</p>
+
               <button
-                class="ed-button"
-                onClick={() => handleDeleteStudent(student._id)}
-              >
-                Delete
-              </button>
-              <button
-                class="ed-button"
+                className="btn edit-btn"
                 onClick={() => handleEditStudent(student)}
               >
                 Edit
+              </button>
+              <button
+                className="btn delete-btn"
+                onClick={() => handleDeleteStudent(student._id)}
+              >
+                Delete
               </button>
             </li>
           ))}

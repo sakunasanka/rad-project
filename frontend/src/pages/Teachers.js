@@ -79,7 +79,7 @@ function Teachers() {
     setNewTeacher({
       name: teacher.name,
       country: teacher.country,
-      birth_Date: teacher.birth_Date,
+      birth_Date: teacher.birth_Date.split('T')[0],
       email: teacher.email,
       Subjects: teacher.Subjects,
     });
@@ -90,8 +90,8 @@ function Teachers() {
   }, []);
 
   return (
-    <div>
-      <h1>Teachers</h1>
+    <div className="page-background">
+      <h1 className="title">Teachers</h1>
 
       {/* Form for creating or updating a teacher */}
       <form onSubmit={handleCreateOrUpdateTeacher}>
@@ -172,6 +172,7 @@ function Teachers() {
                   Subjects: '',
                 });
               }}
+              className="cancel-button"
             >
               Cancel
             </button>
@@ -180,26 +181,28 @@ function Teachers() {
       </form>
 
       <div>
-        <h2>Teacher List</h2>
+        <h2 className="title">Teacher List</h2>
         <ul>
           {teachers.map((teacher) => (
-            <li key={teacher._id}>
+            <li key={teacher._id} className="list">
               <p>Name: {teacher.name}</p>
               <p>Country: {teacher.country}</p>
-              <p>Birth Date: {teacher.birth_Date}</p>
+              <p>Birth Date: {teacher.birth_Date.split('T')[0]}</p>
               <p>Email: {teacher.email}</p>
               <p>Subjects: {teacher.Subjects}</p>
+
               <button
-                class="ed-button"
-                onClick={() => handleDeleteTeacher(teacher._id)}
-              >
-                Delete
-              </button>
-              <button
-                class="ed-button"
+                className="btn edit-btn"
                 onClick={() => handleEditTeacher(teacher)}
               >
                 Edit
+              </button>
+
+              <button
+                className="btn delete-btn"
+                onClick={() => handleDeleteTeacher(teacher._id)}
+              >
+                Delete
               </button>
             </li>
           ))}
