@@ -62,7 +62,7 @@ const CourseDetails = ({ course }) => {
   };
 
   return (
-    <div className="course-details">
+    <div >
       <h4>{isEditing ? 'Edit Course' : course.course_name}</h4>
       {isEditing ? (
         <div>
@@ -96,18 +96,13 @@ const CourseDetails = ({ course }) => {
       </p>
       {isEditing ? (
         <div>
-          <button onClick={handleUpdateClick}>Update Course</button>
-          <button onClick={handleCancelClick}>Cancel</button>
+          <button onClick={handleUpdateClick} className='btn update-btn'>Update Course</button>
+          <button onClick={handleCancelClick} className='btn cancel-btn'>Cancel</button>
         </div>
       ) : (
         <div>
-          <span
-            className="material-symbols-outlined"
-            onClick={handleDeleteClick}
-          >
-            delete
-          </span>
-          <button onClick={handleEditClick}>Edit</button>
+          <button onClick={handleEditClick} className='btn edit-btn'>Edit</button>
+          <button onClick={handleDeleteClick} className='btn delete-btn'>Delete</button>
         </div>
       )}
     </div>
